@@ -10,6 +10,10 @@
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>
 
+		<!-- Populate Tables and Insert Data -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.import_files">data.sql</property>
+
 		<!-- JDBC Connection Pool Settings ... Using Built-in Test Pool -->
 		<property name="connection.pool_size">1</property>
 
