@@ -1,2 +1,8 @@
+.classpath
+.gitignore
+.project
+.springBeans
+/.settings/
 /target/
 /WebContent/
+
