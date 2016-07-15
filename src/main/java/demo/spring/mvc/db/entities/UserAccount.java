@@ -31,17 +31,17 @@ public class UserAccount {
 	private String gender;
 	@Column(name = "phone")
 	private String phone;
-	@Column(name = "username")
-	private String username;
-	@Column(name = "password")
-	private String password;
+	// @Column(name = "username")
+	// private String username;
+	// @Column(name = "password")
+	// private String password;
 
 	public UserAccount() {
 
 	}
 
 	public UserAccount(String name, String email, String birthyear, String birthMonth, String birthday, String gender,
-			String phone, String username, String password) {
+			String phone) {
 		this.name = name;
 		this.email = email;
 		this.birthyear = birthyear;
@@ -49,8 +49,6 @@ public class UserAccount {
 		this.birthday = birthday;
 		this.gender = gender;
 		this.phone = phone;
-		this.username = username;
-		this.password = password;
 	}
 
 	public Integer getId() {
@@ -117,21 +115,21 @@ public class UserAccount {
 		this.phone = phone;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	// public String getUsername() {
+	// return username;
+	// }
+	//
+	// public void setUsername(String username) {
+	// this.username = username;
+	// }
+	//
+	// public String getPassword() {
+	// return password;
+	// }
+	//
+	// public void setPassword(String password) {
+	// this.password = password;
+	// }
 
 	@Override
 	public String toString() {

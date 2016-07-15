@@ -6,19 +6,24 @@
 	<session-factory>
 		<!-- JDBC Connection Settings -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/demo?useSSL=false</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/StudentDB?useSSL=false</property>
+		<property name="hibernate.connection.username">StudentDB</property>
+		<property name="hibernate.connection.password">StudentDB</property>
 
 		<!-- Populate Tables and Insert Data -->
 		<property name="hibernate.hbm2ddl.auto">create</property>
-		<property name="hibernate.hbm2ddl.import_files">data.sql</property>
+		<property name="hibernate.hbm2ddl.import_files">import.sql</property>
+		<!-- Add Multiple Lines Sql Support -->
+		<property name="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</property>
 
 		<!-- JDBC Connection Pool Settings ... Using Built-in Test Pool -->
-		<property name="connection.pool_size">1</property>
+		<property name="hibernate.connection.pool_size">1</property>
 
-		<!-- SQL Dialect -->
+		<!-- MySQL Dialect -->
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- MySQL InnoDB Dialect -->
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property> -->
 
 		<!-- Echo SQL stdout -->
 		<property name="show_sql">true</property>
