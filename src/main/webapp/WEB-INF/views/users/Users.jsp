@@ -12,6 +12,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/lib/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/lib/int-tel-input/intlTelInput.css" />
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.min.css?v=${timeStampe}" />
 <title>User Registration Demo - Spring MVC</title>
 </head>
@@ -42,7 +44,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Username</th>
+								<!-- <th>Username</th> -->
 								<th>Full Name</th>
 								<th>E-Mail</th>
 								<th>Birth Date</th>
@@ -52,12 +54,12 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="u in ctrl.users">
-								<td><span></span></td>
-								<td><span ng-bind="u.username"></span></td>
-								<td><span ng-bind="u.name"></span></td>
-								<td><span ng-bind="u.email"></span></td>
-								<td><span ng-bind="u.birthyear"></span></td>
-								<td><span ng-bind="u.gender"></span></td>
+								<td><span>{{$index+1}}</span></td>
+								<!-- <td><span>{{u.username}}</span></td> -->
+								<td><span>{{u.name}}</span></td>
+								<td><span>{{u.email}}</span></td>
+								<td><span>{{u.birthyear}}</span></td>
+								<td><span>{{u.gender}}</span></td>
 								<td>
 									<div class="text-center">
 										<a class="btn btn-primary btn-circle" title="Edit User"
@@ -170,6 +172,8 @@
 		src="${pageContext.request.contextPath}/resources/lib/tether/js/tether.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/lib/int-tel-input/intlTelInput.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/app.js?v=${timeStampe}"></script>
 	<script

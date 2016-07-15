@@ -53,6 +53,9 @@ initUserModal = function() {
 	phone.bind('paste', function(e) {
 		e.preventDefault();
 	});
+	phone.intlTelInput({
+		utilsScript : "/spring-mvc-demo/resources/lib/int-tel-input/utils.js"
+	});
 	var _31Months = [ 'January', 'March', 'May', 'July', 'August', 'October',
 			'December' ];
 	var _30Months = [ 'April', 'June', 'September', 'November' ];
