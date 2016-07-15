@@ -2,7 +2,7 @@
 .gitignore
 .project
 .springBeans
-/.settings/
-/target/
-/WebContent/
+/.settings/*
+/target/*
+/WebContent/*
 
