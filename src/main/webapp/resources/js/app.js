@@ -231,10 +231,10 @@ validateAll = function() {
 	var _valid = false;
 
 	validateEmail();
-	validateUsername();
-	validatePassword();
+	// validateUsername();
+	// validatePassword();
 
-	if (validateEmail() && validateUsername() && validatePassword()) {
+	if (validateEmail()) {
 		_valid = true;
 	}
 	return _valid;
@@ -244,9 +244,9 @@ validateUpdate = function() {
 	var _valid = false;
 
 	validateEmail();
-	validateUsername();
+	// validateUsername();
 
-	if (validateEmail() && validateUsername()) {
+	if (validateEmail()) {
 		_valid = true;
 	}
 	return _valid;

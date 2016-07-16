@@ -73,6 +73,33 @@ public class DAO {
 		return t;
 	}
 
+	public <T> Long count(Class<T> type) {
+		Long l = null;
+		try {
+			startOperation();
+			l = (Long) session.createQuery("select count(*) from " + type.getName()).uniqueResult();
+			tx.commit();
+		} catch (HibernateException e) {
+			handleException(e);
+		} finally {
+			HibernateFactory.close(session);
+		}
+		return l;
+	}
+
+	public <T> void executeNativeSQL(String sql) {
+		try {
+			startOperation();
+			session.createSQLQuery(sql).executeUpdate();
+			tx.commit();
+		} catch (HibernateException e) {
+			logger.error("Error Native Executing SQL Query: " + sql);
+			handleException(e);
+		} finally {
+			HibernateFactory.close(session);
+		}
+	}
+
 	private void handleException(HibernateException e) throws DataAccessLayerException {
 		HibernateFactory.rollback(tx);
 		throw new DataAccessLayerException(e);

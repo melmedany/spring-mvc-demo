@@ -100,26 +100,26 @@
 								placeholder="example@domain.com"
 								ng-model="ctrl.selectedUser.email" />
 						</div>
-						<div class="form-group">
-							<label for="username" class="sr-only"> Username <span
-								class="required">*</span>
-							</label> <input type="text" id="username" class="form-control"
-								placeholder="Choose a Username"
-								ng-model="ctrl.selectedUser.username" />
-						</div>
-						<div class="form-group" ng-if="!ctrl.selectedUser.id">
-							<label for="password" class="sr-only"> Password <span
-								class="required">*</span>
-							</label> <input type="password" id="password" class="form-control"
-								placeholder="Choose a Password"
-								ng-model="ctrl.selectedUser.password" />
-						</div>
-						<div class="form-group" ng-if="!ctrl.selectedUser.id">
-							<label for="repassword" class="sr-only"> Confirm Password
-								<span class="required">*</span>
-							</label> <input type="password" id="repassword" class="form-control"
-								placeholder="Re-Enter Passowrd" />
-						</div>
+						<!-- <div class="form-group"> -->
+						<!-- <label for="username" class="sr-only"> Username <span -->
+						<!-- class="required">*</span> -->
+						<!-- </label> <input type="text" id="username" class="form-control" -->
+						<!-- placeholder="Choose a Username" -->
+						<!-- ng-model="ctrl.selectedUser.username" /> -->
+						<!-- </div> -->
+						<!-- <div class="form-group" ng-if="!ctrl.selectedUser.id"> -->
+						<!-- <label for="password" class="sr-only"> Password <span -->
+						<!-- class="required">*</span> -->
+						<!-- </label> <input type="password" id="password" class="form-control" -->
+						<!-- placeholder="Choose a Password" -->
+						<!-- ng-model="ctrl.selectedUser.password" /> -->
+						<!-- </div> -->
+						<!-- <div class="form-group" ng-if="!ctrl.selectedUser.id"> -->
+						<!-- <label for="repassword" class="sr-only"> Confirm Password -->
+						<!-- <span class="required">*</span> -->
+						<!-- </label> <input type="password" id="repassword" class="form-control" -->
+						<!-- placeholder="Re-Enter Passowrd" /> -->
+						<!-- </div> -->
 						<div class="form-group">
 							<div class="row">
 								<div class="col-xs-4">
