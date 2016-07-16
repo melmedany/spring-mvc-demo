@@ -16,5 +16,5 @@ This repository contains a CRUD demo project using spring mvc.
 -	create an empty database in mysql
 -	open [hibernate.cfg.xml](src/main/resources/hibernate.cfg.xml)
 -	update `hibernate.connection.url`, `hibernate.connection.username`, `hibernate.connection.password`
--	save & run
+-	save & deploy
 
