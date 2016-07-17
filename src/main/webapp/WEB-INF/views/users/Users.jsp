@@ -49,17 +49,19 @@
 								<th>E-Mail</th>
 								<th>Birth Date</th>
 								<th>Gender</th>
+								<th>Phone</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr ng-repeat="u in ctrl.currentUsers">
-								<td><span>{{$index+1}}</span></td>
+								<td><span ng-bind="$index+1"></span></td>
 								<!-- <td><span>{{u.username}}</span></td> -->
-								<td><span>{{u.name}}</span></td>
-								<td><span>{{u.email}}</span></td>
-								<td><span>{{u.birthyear}}</span></td>
-								<td><span>{{u.gender}}</span></td>
+								<td><span ng-bind="u.name"></span></td>
+								<td><span ng-bind="u.email"></span></td>
+								<td><span ng-bind="u.birthyear"></span></td>
+								<td><span ng-bind="u.gender"></span></td>
+								<td><span ng-bind="u.phone"></span></td>
 								<td>
 									<div class="text-center">
 										<a class="btn btn-primary btn-circle" title="Edit User"
@@ -74,7 +76,8 @@
 					</table>
 					<div id="resultTablePagination">
 						<nav>
-						<ul class="pagination pagination-sm" ng-if="ctrl.pages.length > ctrl.numPerPage">
+						<ul class="pagination pagination-sm"
+							ng-if="ctrl.pages.length > ctrl.numPerPage">
 							<li
 								class="page-item {{ctrl.currentPage == 1 ? 'not-active disabled' : ''}}"><a
 								class="page-link {{ctrl.currentPage == 1 ? 'not-active disabled' : ''}}"
@@ -91,7 +94,7 @@
 							<li class="page-item {{ctrl.currentPage == p ? 'active' : ''}}"
 								ng-repeat="p in ctrl.pages"><a type="button"
 								class="page-link {{ctrl.currentPage == p ? 'active' : ''}}"
-								ng-click="ctrl.pageChanged(p)">{{p}}</a></li>
+								ng-click="ctrl.pageChanged(p)" ng-bind="p"></a></li>
 							<li
 								class="page-item {{ctrl.currentPage == ctrl.pages.length ? 'not-active disabled' : ''}}"><a
 								class="page-link {{ctrl.currentPage == ctrl.pages.length ? 'not-active disabled' : ''}}"
@@ -194,7 +197,7 @@
 											ctrl.selectedUser.gender : 'I am a'}}</button>
 										<div class="dropdown-menu">
 											<a class="dropdown-item" ng-click="ctrl.selectGener(g)"
-												ng-repeat="g in ctrl.geners">{{g}}</a>
+												ng-repeat="g in ctrl.geners" ng-bind="g"></a>
 										</div>
 									</div>
 								</div>
