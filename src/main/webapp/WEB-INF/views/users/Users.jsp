@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/lib/int-tel-input/intlTelInput.css" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.min.css?v=${timeStampe}" />
+	href="${pageContext.request.contextPath}/resources/css/style.css?v=${timeStampe}" />
 <title>User Registration Demo - Spring MVC</title>
 </head>
 <body>
@@ -147,9 +147,18 @@
 										ng-model="ctrl.selectedUser.phone" />
 								</div>
 								<div class="col-xs-6">
-									<label for="gender" class="sr-only">Gender</label> <input
-										type="text" id="gender" class="form-control"
-										ng-model="ctrl.selectedUser.gender" />
+									<label for="gender" class="sr-only">Gender</label>
+									<div class="btn-group genders">
+										<button type="button"
+											class="btn btn-secondary dropdown-toggle"
+											data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false">{{ctrl.selectedUser.gender ?
+											ctrl.selectedUser.gender : 'I am a'}}</button>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" ng-click="ctrl.selectGener(g)"
+												ng-repeat="g in ctrl.geners">{{g}}</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

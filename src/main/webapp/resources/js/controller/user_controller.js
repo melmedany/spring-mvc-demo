@@ -7,6 +7,7 @@ App.controller('UserController', [
 			var self = this;
 			self.selectedUser;
 			self.users = [];
+			self.geners = [ 'Female', 'Male', 'Other' ];
 
 			self.fetchAllUsers = function() {
 				UserService.fetchAllUsers().then(function(d) {
@@ -91,6 +92,10 @@ App.controller('UserController', [
 				}
 				self.deleteUser(id);
 			};
+
+			self.selectGener = function(gender) {
+				self.selectedUser.gender = gender;
+			}
 
 			self.reset = function() {
 				self.selectedUser = {
