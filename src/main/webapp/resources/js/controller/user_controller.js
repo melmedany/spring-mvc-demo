@@ -8,13 +8,24 @@ App.controller('UserController', [
 			self.selectedUser;
 			self.users = [];
 			self.geners = [ 'Female', 'Male', 'Other' ];
+			self.currentUsers = [];
+			self.currentPage = 1;
+			self.numPerPage = 10;
+			self.maxSize = 5;
+			self.pages = [];
 
 			self.fetchAllUsers = function() {
-				UserService.fetchAllUsers().then(function(d) {
-					self.users = d;
-				}, function(errResponse) {
-					console.error('Error while fetching Currencies');
-				});
+				UserService.fetchAllUsers().then(
+						function(d) {
+							self.users = d;
+							for (var i = 0; i < Math.ceil(self.users.length
+									/ self.numPerPage); i++) {
+								self.pages.push('' + (i + 1) + '');
+							}
+							self.paging();
+						}, function(errResponse) {
+							console.error('Error while fetching Currencies');
+						});
 			};
 
 			self.findUserById = function(id) {
@@ -49,6 +60,20 @@ App.controller('UserController', [
 							});
 				}
 
+			};
+
+			self.paging = function() {
+				var begin = ((self.currentPage - 1) * self.numPerPage);
+				var end = begin + self.numPerPage;
+				self.currentUsers = self.users.slice(begin, end);
+			};
+
+			self.pageChanged = function(page) {
+				if (page > 0 && page <= self.pages.length) {
+					self.currentPage = page;
+					console.log("requested page:" + page);
+					self.paging();
+				}
 			};
 
 			self.fetchAllUsers();
@@ -112,5 +137,4 @@ App.controller('UserController', [
 				};
 				$scope.appFrm.$setPristine();
 			};
-
 		} ]);

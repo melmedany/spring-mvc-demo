@@ -53,7 +53,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="u in ctrl.users">
+							<tr ng-repeat="u in ctrl.currentUsers">
 								<td><span>{{$index+1}}</span></td>
 								<!-- <td><span>{{u.username}}</span></td> -->
 								<td><span>{{u.name}}</span></td>
@@ -72,20 +72,45 @@
 							</tr>
 						</tbody>
 					</table>
+					<div id="resultTablePagination">
+						<nav>
+						<ul class="pagination pagination-sm" ng-if="ctrl.pages.length > ctrl.numPerPage">
+							<li
+								class="page-item {{ctrl.currentPage == 1 ? 'not-active disabled' : ''}}"><a
+								class="page-link {{ctrl.currentPage == 1 ? 'not-active disabled' : ''}}"
+								type="button" ng-click="ctrl.pageChanged(1)" title="First">
+									<span aria-hidden="true">&laquo;</span> <span class="sr-only">First</span>
+							</a></li>
+							<li
+								class="page-item {{ctrl.currentPage == 1 ? 'not-active disabled' : ''}}"><a
+								class="page-link {{ctrl.currentPage == 1 ? 'not-active disabled' : ''}}"
+								type="button" ng-click="ctrl.pageChanged(ctrl.currentPage -1)"
+								title="Previous"> <span aria-hidden="true">&lsaquo;</span> <span
+									class="sr-only">Previous</span>
+							</a></li>
+							<li class="page-item {{ctrl.currentPage == p ? 'active' : ''}}"
+								ng-repeat="p in ctrl.pages"><a type="button"
+								class="page-link {{ctrl.currentPage == p ? 'active' : ''}}"
+								ng-click="ctrl.pageChanged(p)">{{p}}</a></li>
+							<li
+								class="page-item {{ctrl.currentPage == ctrl.pages.length ? 'not-active disabled' : ''}}"><a
+								class="page-link {{ctrl.currentPage == ctrl.pages.length ? 'not-active disabled' : ''}}"
+								type="button" ng-click="ctrl.pageChanged(ctrl.currentPage + 1)"
+								title="Next"> <span aria-hidden="true">&rsaquo;</span> <span
+									class="sr-only">Next</span>
+							</a></li>
+							<li
+								class="page-item {{ctrl.currentPage == ctrl.pages.length ? 'not-active disabled' : ''}}"><a
+								class="page-link {{ctrl.currentPage == ctrl.pages.length ? 'not-active disabled' : ''}}"
+								type="button" ng-click="ctrl.pageChanged(ctrl.pages.length)"
+								title="Last"> <span aria-hidden="true">&raquo;</span> <span
+									class="sr-only">Last</span>
+							</a></li>
+						</ul>
+						</nav>
+					</div>
 				</div>
-				<nav>
-				<ul class="pagination">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous" title="Previous"> <span
-							aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>
-					</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next" title="Next"> <span aria-hidden="true">&raquo;</span>
-							<span class="sr-only">Next</span>
-					</a></li>
-				</ul>
-				</nav>
+
 			</div>
 		</div>
 		<div id="userModal" class="modal fade">
@@ -190,6 +215,8 @@
 		src="${pageContext.request.contextPath}/resources/lib/jQuery/jquery-1.12.3.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/lib/angularjs/angular.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/lib/angular-ui/ui-bootstrap-tpls-1.3.3.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/lib/tether/js/tether.min.js"></script>
 	<script

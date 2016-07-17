@@ -1,17 +1,6 @@
 'use strict';
 
-var App = angular.module('CRUDdemoApp', []);
-
-$(document).ready(function() {
-	console.log('app ready');
-	checkResolution();
-	$('.genders .btn-secondary').click(function() {
-        var pos = $('.genders').offset(), inputTop = pos.top, windowTop = $(window).scrollTop(), 
-        dropdownFitsBelow = inputTop + $('.genders').outerHeight() + $('.genders > div').outerHeight() < windowTop + $(window).height(), dropdownFitsAbove = inputTop - $('.genders > div').outerHeight() > windowTop;
-        $('.genders').toggleClass("dropup", !dropdownFitsBelow && dropdownFitsAbove);
-
-	});
-});
+var App = angular.module('CRUDdemoApp', ['ui.bootstrap']);
 
 var checkResolution = function() {
 	var width = screen.width;
@@ -271,3 +260,20 @@ removeDangerClasses = function(object) {
 	object.parent().closest('div').addClass('form-group');
 	object.addClass('form-control');
 };
+
+
+$(document).ready(function() {
+	console.log('app ready');
+	checkResolution();
+	$('.genders .btn-secondary').click(function() {
+        var pos = $('.genders').offset(), inputTop = pos.top, windowTop = $(window).scrollTop(), 
+        dropdownFitsBelow = inputTop + $('.genders').outerHeight() + $('.genders > div').outerHeight() < windowTop + $(window).height(), dropdownFitsAbove = inputTop - $('.genders > div').outerHeight() > windowTop;
+        $('.genders').toggleClass("dropup", !dropdownFitsBelow && dropdownFitsAbove);
+
+	});
+	
+//	$('#resultTablePagination li').on('click', function(){
+//	    $('#resultTablePagination li').removeClass('active');
+//	    $(this).addClass('active');
+//	});
+});
