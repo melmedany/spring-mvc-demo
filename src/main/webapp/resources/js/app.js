@@ -5,6 +5,12 @@ var App = angular.module('CRUDdemoApp', []);
 $(document).ready(function() {
 	console.log('app ready');
 	checkResolution();
+	$('.genders .btn-secondary').click(function() {
+        var pos = $('.genders').offset(), inputTop = pos.top, windowTop = $(window).scrollTop(), 
+        dropdownFitsBelow = inputTop + $('.genders').outerHeight() + $('.genders > div').outerHeight() < windowTop + $(window).height(), dropdownFitsAbove = inputTop - $('.genders > div').outerHeight() > windowTop;
+        $('.genders').toggleClass("dropup", !dropdownFitsBelow && dropdownFitsAbove);
+
+	});
 });
 
 var checkResolution = function() {

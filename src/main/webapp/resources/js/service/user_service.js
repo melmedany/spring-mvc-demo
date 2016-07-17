@@ -5,7 +5,6 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
 	return {
 		
 			fetchAllUsers: function() {
-				console.log(baseURL);
 					return $http.get(baseURL+'/users/search/')
 							.then(
 									function(response){

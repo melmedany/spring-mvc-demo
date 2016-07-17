@@ -40,7 +40,7 @@
 					<div class="col-md-5"></div>
 				</div>
 				<div id="resultTable">
-					<table id="userTable" class="table top-border-table">
+					<table id="userTable" class="table table-hover">
 						<thead>
 							<tr>
 								<th>#</th>
@@ -73,6 +73,19 @@
 						</tbody>
 					</table>
 				</div>
+				<nav>
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#"
+						aria-label="Previous" title="Previous"> <span
+							aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>
+					</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#"
+						aria-label="Next" title="Next"> <span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+					</a></li>
+				</ul>
+				</nav>
 			</div>
 		</div>
 		<div id="userModal" class="modal fade">

@@ -41,3 +41,9 @@
 	float: right;
 	margin-top: 0.7rem;
 }
+
+.genders .dropdown-item:hover, .intl-tel-input .country-list .country.highlight
+	{
+	color: #fff;
+	background-color: #025aa5;
+}
