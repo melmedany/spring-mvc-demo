@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('CRUDdemoApp', ['ui.bootstrap']);
+var App = angular.module('CRUDdemoApp', []);
 
 var checkResolution = function() {
 	var width = screen.width;
