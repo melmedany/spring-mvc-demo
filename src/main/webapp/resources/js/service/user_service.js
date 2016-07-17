@@ -1,11 +1,12 @@
 'use strict';
 
 App.factory('UserService', ['$http', '$q', function($http, $q){
-
+	var baseURL = window.location.href;
 	return {
 		
 			fetchAllUsers: function() {
-					return $http.get('http://localhost:8081/spring-mvc-demo/users/search/')
+				console.log(baseURL);
+					return $http.get(baseURL+'/users/search/')
 							.then(
 									function(response){
 										return response.data;
@@ -17,7 +18,7 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
 							);
 			},
 			fetchByID: function(id){
-				return $http.get('http://localhost:8081/spring-mvc-demo/users/search/'+id)
+				return $http.get(baseURL+'/users/search/'+id)
 						.then(
 								function(response){
 									return response.data;
@@ -30,7 +31,7 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
 			},
 		    
 		    createUser: function(user){
-					return $http.post('http://localhost:8081/spring-mvc-demo/users/create/', user)
+					return $http.post(baseURL+'/users/create/', user)
 							.then(
 									function(response){
 										return response.data;
@@ -43,7 +44,7 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
 		    },
 		    
 		    updateUser: function(user, id){
-					return $http.put('http://localhost:8081/spring-mvc-demo/users/update/', user)
+					return $http.put(baseURL+'/users/update/', user)
 							.then(
 									function(response){
 										return response.data;
@@ -56,7 +57,7 @@ App.factory('UserService', ['$http', '$q', function($http, $q){
 			},
 		    
 			deleteUser: function(id){
-					return $http.delete('http://localhost:8081/spring-mvc-demo/users/delete/'+id)
+					return $http.delete(baseURL+'/users/delete/'+id)
 							.then(
 									function(response){
 										return response.data;
