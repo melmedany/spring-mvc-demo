@@ -45,6 +45,7 @@ App.controller('UserController', [
 			};
 
 			self.updateUser = function(user, id) {
+				console.log('updating user ' + JSON.stringify(user));
 				UserService.updateUser(user, id).then(self.fetchAllUsers,
 						function(errResponse) {
 							console.error('Error while updating User.');
@@ -103,6 +104,7 @@ App.controller('UserController', [
 			self.edit = function(id) {
 				UserService.fetchByID(id).then(function(d) {
 					self.selectedUser = d;
+					self.selectedUser.birthdate = new Date(self.selectedUser.birthdate);
 					userModal('show');
 					initUserModal();
 				}, function(errResponse) {
@@ -127,14 +129,13 @@ App.controller('UserController', [
 					id : null,
 					name : '',
 					email : '',
-					birthyear : '',
-					birthMonth : '',
-					birthday : '',
+					birthdate : '',
 					gender : '',
 					phone : '',
 					username : '',
 					password : ''
 				};
+				self.selectedUser.birthdate = new Date();
 				$scope.appFrm.$setPristine();
 			};
 		} ]);

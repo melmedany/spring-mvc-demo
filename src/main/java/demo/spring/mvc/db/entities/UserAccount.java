@@ -1,5 +1,7 @@
 package demo.spring.mvc.db.entities;
 
+import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,12 +23,8 @@ public class UserAccount {
 	private String name;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "birthyear")
-	private String birthyear;
-	@Column(name = "birthMonth")
-	private String birthMonth;
-	@Column(name = "birthday")
-	private String birthday;
+	@Column(name = "birthdate")
+	private Date birthdate;
 	@Column(name = "gender")
 	private String gender;
 	@Column(name = "phone")
@@ -40,13 +38,10 @@ public class UserAccount {
 
 	}
 
-	public UserAccount(String name, String email, String birthyear, String birthMonth, String birthday, String gender,
-			String phone) {
+	public UserAccount(String name, String email, Date birthdate, String gender, String phone) {
 		this.name = name;
 		this.email = email;
-		this.birthyear = birthyear;
-		this.birthMonth = birthMonth;
-		this.birthday = birthday;
+		this.birthdate = birthdate;
 		this.gender = gender;
 		this.phone = phone;
 	}
@@ -75,28 +70,12 @@ public class UserAccount {
 		this.email = email;
 	}
 
-	public String getBirthyear() {
-		return birthyear;
+	public Date getBirthdate() {
+		return birthdate;
 	}
 
-	public void setBirthyear(String birthyear) {
-		this.birthyear = birthyear;
-	}
-
-	public String getBirthMonth() {
-		return birthMonth;
-	}
-
-	public void setBirthMonth(String birthMonth) {
-		this.birthMonth = birthMonth;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
 	}
 
 	public String getGender() {

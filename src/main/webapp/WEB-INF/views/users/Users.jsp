@@ -12,6 +12,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/lib/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/lib/angular-material/angular-material.min.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/lib/int-tel-input/intlTelInput.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css?v=${timeStampe}" />
@@ -59,7 +61,7 @@
 								<!-- <td><span>{{u.username}}</span></td> -->
 								<td><span ng-bind="u.name"></span></td>
 								<td><span ng-bind="u.email"></span></td>
-								<td><span ng-bind="u.birthyear"></span></td>
+								<td><span ng-bind="u.birthdate | date:'MMM d, y'"></span></td>
 								<td><span ng-bind="u.gender"></span></td>
 								<td><span ng-bind="u.phone"></span></td>
 								<td>
@@ -164,30 +166,17 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-xs-4">
-									<label for="BirthMonth" class="sr-only">Month</label> <input
-										type="text" id="BirthMonth" class="form-control"
-										ng-model="ctrl.selectedUser.birthMonth" />
+									<md-content> <label for="BirthDate"
+										class="sr-only">Birth Date</label> <md-datepicker
+										id="BirthDate" ng-model="ctrl.selectedUser.birthdate"
+										md-placeholder="Date of Birth"></md-datepicker> </md-content>
 								</div>
 								<div class="col-xs-4">
-									<label for="BirthDay" class="sr-only">Day</label> <input
-										type="text" id="BirthDay" class="form-control" maxlength="2"
-										placeholder="Day" ng-model="ctrl.selectedUser.birthday" />
-								</div>
-								<div class="col-xs-4">
-									<label for="BirthYear" class="sr-only">Year</label> <input
-										type="text" id="BirthYear" class="form-control" maxlength="4"
-										placeholder="Year" ng-model="ctrl.selectedUser.birthyear" />
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<div class="col-xs-6">
 									<label for="phone" class="sr-only">Mobile</label> <input
 										id="phone" class="form-control" placeholder="Mobile Phone"
 										ng-model="ctrl.selectedUser.phone" />
 								</div>
-								<div class="col-xs-6">
+								<div class="col-xs-4">
 									<label for="gender" class="sr-only">Gender</label>
 									<div class="btn-group genders">
 										<button type="button"
@@ -219,7 +208,11 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/lib/angularjs/angular.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/resources/lib/angular-ui/ui-bootstrap-tpls-1.3.3.js"></script>
+		src="${pageContext.request.contextPath}/resources/lib/angular-animate/angular-animate.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/lib/angular-aria/angular-aria.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/lib/angular-material/angular-material.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/lib/tether/js/tether.min.js"></script>
 	<script

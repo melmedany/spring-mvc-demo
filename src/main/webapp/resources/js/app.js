@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('CRUDdemoApp', []);
+var App = angular.module('CRUDdemoApp', ['ngMaterial']);
 
 var checkResolution = function() {
 	var width = screen.width;
@@ -14,7 +14,7 @@ var checkResolution = function() {
 },
 
 initUserModal = function() {
-	var fullname = $('#fullname'), email = $('#email'), username = $('#username'), password = $('#password'), repassword = $('#repassword'), day = $('#BirthDay'), year = $('#BirthYear'), phone = $('#phone');
+	var fullname = $('#fullname'), email = $('#email'), username = $('#username'), password = $('#password'), repassword = $('#repassword'), phone = $('#phone');
 	email.on('blur keyup paste', function(evt) {
 		validateEmail();
 	});
@@ -27,18 +27,6 @@ initUserModal = function() {
 	repassword.on('blur keyup paste', function(evt) {
 		validatePassword();
 	});
-	day.bind('paste', function(e) {
-		e.preventDefault();
-	});
-	year.on('keypress ', function(evt) {
-		var charCode = (evt.which) ? evt.which : evt.keyCode;
-		if (charCode > 31 && (charCode < 48 || charCode > 57))
-			return false;
-		return true;
-	});
-	year.bind('paste', function(e) {
-		e.preventDefault();
-	});
 	phone.on('keypress ', function(evt) {
 		var charCode = (evt.which) ? evt.which : evt.keyCode;
 		if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -50,95 +38,6 @@ initUserModal = function() {
 	});
 	phone.intlTelInput({
 		utilsScript : "/spring-mvc-demo/resources/lib/int-tel-input/utils.js"
-	});
-	var _31Months = [ 'January', 'March', 'May', 'July', 'August', 'October',
-			'December' ];
-	var _30Months = [ 'April', 'June', 'September', 'November' ];
-	$('#BirthMonth').on(
-			'change',
-			function() {
-				if ($.inArray(this.value, _31Months) > -1) {
-					day.unbind('keypress');
-					day.keypress(function(evt) {
-						var charCode = (evt.which) ? evt.which : evt.keyCode;
-						if (day.val() === ''
-								&& (charCode > 48 && charCode < 58)) {
-							return true;
-						} else if (day.val() !== '' && day.val() < 3
-								&& (charCode > 47 && charCode < 58)) {
-							return true;
-						} else if (day.val() === '3'
-								&& (charCode > 47 && charCode < 50)) {
-							return true;
-						} else {
-							return false;
-						}
-					});
-				} else if ($.inArray(this.value, _30Months) > -1) {
-					(day.val() > 30) ? day.val(30) : '';
-					day.unbind('keypress');
-					day.keypress(function(evt) {
-						var charCode = (evt.which) ? evt.which : evt.keyCode;
-						if (day.val() === ''
-								&& (charCode > 48 && charCode < 58)) {
-							return true;
-						} else if (day.val() !== '' && day.val() < 3
-								&& (charCode > 47 && charCode < 58)) {
-							return true;
-						} else if (day.val() === '3'
-								&& (charCode > 47 && charCode < 49)) {
-							return true;
-						} else {
-							return false;
-						}
-					});
-				} else if (this.value === 'February') {
-					(day.val() > 29) ? day.val(29) : '';
-					day.unbind('keypress');
-					day.keypress(function(evt) {
-						var charCode = (evt.which) ? evt.which : evt.keyCode;
-						if (day.val() === ''
-								&& (charCode > 48 && charCode < 58)) {
-							return true;
-						} else if (day.val() !== '' && day.val() < 3
-								&& (charCode > 47 && charCode < 58)) {
-							return true;
-						} else {
-							return false;
-						}
-					});
-				} else {
-					day.unbind('keypress');
-					day.keypress(function(evt) {
-						var charCode = (evt.which) ? evt.which : evt.keyCode;
-						if (day.val() === ''
-								&& (charCode > 48 && charCode < 58)) {
-							return true;
-						} else if (day.val() !== '' && day.val() < 3
-								&& (charCode > 47 && charCode < 58)) {
-							return true;
-						} else if (day.val() === '3'
-								&& (charCode > 47 && charCode < 50)) {
-							return true;
-						} else {
-							return false;
-						}
-					});
-				}
-			});
-	day.unbind('keypress');
-	day.keypress(function(evt) {
-		var charCode = (evt.which) ? evt.which : evt.keyCode;
-		if (day.val() === '' && (charCode > 48 && charCode < 58)) {
-			return true;
-		} else if (day.val() !== '' && day.val() < 3
-				&& (charCode > 47 && charCode < 58)) {
-			return true;
-		} else if (day.val() === '3' && (charCode > 47 && charCode < 50)) {
-			return true;
-		} else {
-			return false;
-		}
 	});
 	$('#userModal').on('shown.bs.modal', function() {
 		fullname.focus();
