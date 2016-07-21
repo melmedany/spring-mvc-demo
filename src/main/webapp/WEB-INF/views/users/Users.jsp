@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/lib/int-tel-input/intlTelInput.css" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css?v=${timeStampe}" />
+	href="${pageContext.request.contextPath}/resources/css/style.min.css?v=${timeStampe}" />
 <title>User Registration Demo - Spring MVC</title>
 </head>
 <body>
@@ -198,10 +198,10 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/lib/int-tel-input/intlTelInput.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/resources/js/app.js?v=${timeStampe}"></script>
+		src="${pageContext.request.contextPath}/resources/js/app.min.js?v=${timeStampe}"></script>
 	<script
-		src="${pageContext.request.contextPath}/resources/js/service/user_service.js?v=${timeStampe}"></script>
+		src="${pageContext.request.contextPath}/resources/js/service/user_service.min.js?v=${timeStampe}"></script>
 	<script
-		src="${pageContext.request.contextPath}/resources/js/controller/user_controller.js?v=${timeStampe}"></script>
+		src="${pageContext.request.contextPath}/resources/js/controller/user_controller.min.js?v=${timeStampe}"></script>
 </body>
 </html>
