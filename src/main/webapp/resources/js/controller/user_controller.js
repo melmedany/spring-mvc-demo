@@ -45,7 +45,6 @@ App.controller('UserController', [
 			};
 
 			self.updateUser = function(user, id) {
-				console.log('updating user ' + JSON.stringify(user));
 				UserService.updateUser(user, id).then(self.fetchAllUsers,
 						function(errResponse) {
 							console.error('Error while updating User.');
@@ -54,7 +53,6 @@ App.controller('UserController', [
 
 			self.deleteUser = function(id) {
 				if (confirm('Are you sure?')) {
-					console.log('start deleting');
 					UserService.deleteUser(id).then(self.fetchAllUsers,
 							function(errResponse) {
 								console.error('Error while deleting User.');
@@ -72,7 +70,6 @@ App.controller('UserController', [
 			self.pageChanged = function(page) {
 				if (page > 0 && page <= self.pages.length) {
 					self.currentPage = page;
-					console.log("requested page:" + page);
 					self.paging();
 				}
 			};
@@ -113,7 +110,6 @@ App.controller('UserController', [
 			};
 
 			self.remove = function(id) {
-				console.log('id to be deleted', id);
 				if (self.selectedUser.id === id) {
 					self.reset();
 				}
@@ -131,9 +127,7 @@ App.controller('UserController', [
 					email : '',
 					birthdate : '',
 					gender : '',
-					phone : '',
-					username : '',
-					password : ''
+					phone : ''
 				};
 				self.selectedUser.birthdate = new Date();
 				$scope.appFrm.$setPristine();

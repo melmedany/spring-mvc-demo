@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('CRUDdemoApp', ['ngMaterial']);
+var App = angular.module('CRUDdemoApp', [ 'ngMaterial' ]);
 
 var checkResolution = function() {
 	var width = screen.width;
@@ -14,18 +14,9 @@ var checkResolution = function() {
 },
 
 initUserModal = function() {
-	var fullname = $('#fullname'), email = $('#email'), username = $('#username'), password = $('#password'), repassword = $('#repassword'), phone = $('#phone');
+	var fullname = $('#fullname'), email = $('#email'), phone = $('#phone');
 	email.on('blur keyup paste', function(evt) {
 		validateEmail();
-	});
-	username.on('blur keyup paste', function(evt) {
-		validateUsername();
-	});
-	password.on('blur keyup paste', function(evt) {
-		validatePassword();
-	});
-	repassword.on('blur keyup paste', function(evt) {
-		validatePassword();
 	});
 	phone.on('keypress ', function(evt) {
 		var charCode = (evt.which) ? evt.which : evt.keyCode;
@@ -48,30 +39,6 @@ userModal = function(option) {
 	$('#userModal').modal(option);
 },
 
-appendRow = function() {
-	var tr = $('#userTable tr:last');
-	tr.hide();
-	tr.fadeIn('slow', function() {
-		// console.log('last tr appended');
-	});
-},
-
-hideRow = function(id, callback) {
-	var tr = $('#userTable tr').eq(id);
-	tr.fadeOut('slow', function() {
-		callback();
-	});
-},
-
-startDelet = function(deleteBtnID, rowID) {
-	if (confirm('Are you sure?')) {
-		hideRow(rowID, function() {
-			$('#' + deleteBtnID).click();
-		});
-	}
-
-},
-
 validateEmail = function() {
 	var _emailregex = /^(([^<>()\[\]\.,;:\s@\']+(\.[^<>()\[\]\.,;:\s@\']+)*)|(\'.+\'))@(([^<>()[\]\.,;:\s@\']+\.)+[^<>()[\]\.,;:\s@\']{2,})$/i;
 	var _validEmail = _emailregex.test($('#email').val());
@@ -85,48 +52,10 @@ validateEmail = function() {
 	}
 },
 
-validateUsername = function() {
-	var _validUserName = $('#username').val().trim().length > 4;
-	if (!_validUserName) {
-		addDangerClasses($('#username'));
-		return false;
-	} else {
-		removeDangerClasses($('#username'));
-		return true;
-	}
-},
-
-validatePassword = function() {
-	var _validPassword = $('#password').val().trim().length > 7;
-	var _matchPassword = $('#password').val().trim() === $('#repassword').val()
-			.trim();
-	var _validPasswordConfirm = $('#repassword').val().trim().length > 7
-			&& _matchPassword;
-	if (!_validPassword) {
-		addDangerClasses($('#password'));
-	} else {
-		removeDangerClasses($('#password'));
-	}
-
-	if (!_validPasswordConfirm) {
-		addDangerClasses($('#repassword'));
-	} else {
-		if (_matchPassword) {
-			removeDangerClasses($('#repassword'));
-		}
-	}
-
-	if (_validPassword && _validPasswordConfirm && _matchPassword) {
-		return true;
-	}
-},
-
 validateAll = function() {
 	var _valid = false;
 
 	validateEmail();
-	// validateUsername();
-	// validatePassword();
 
 	if (validateEmail()) {
 		_valid = true;
@@ -138,7 +67,6 @@ validateUpdate = function() {
 	var _valid = false;
 
 	validateEmail();
-	// validateUsername();
 
 	if (validateEmail()) {
 		_valid = true;
@@ -160,19 +88,27 @@ removeDangerClasses = function(object) {
 	object.addClass('form-control');
 };
 
+$(document)
+		.ready(
+				function() {
+					console.log('app ready');
+					checkResolution();
+					$('.genders .btn-secondary')
+							.click(
+									function() {
+										var pos = $('.genders').offset(), inputTop = pos.top, windowTop = $(
+												window).scrollTop(), dropdownFitsBelow = inputTop
+												+ $('.genders').outerHeight()
+												+ $('.genders > div')
+														.outerHeight() < windowTop
+												+ $(window).height(), dropdownFitsAbove = inputTop
+												- $('.genders > div')
+														.outerHeight() > windowTop;
+										$('.genders').toggleClass(
+												"dropup",
+												!dropdownFitsBelow
+														&& dropdownFitsAbove);
 
-$(document).ready(function() {
-	console.log('app ready');
-	checkResolution();
-	$('.genders .btn-secondary').click(function() {
-        var pos = $('.genders').offset(), inputTop = pos.top, windowTop = $(window).scrollTop(), 
-        dropdownFitsBelow = inputTop + $('.genders').outerHeight() + $('.genders > div').outerHeight() < windowTop + $(window).height(), dropdownFitsAbove = inputTop - $('.genders > div').outerHeight() > windowTop;
-        $('.genders').toggleClass("dropup", !dropdownFitsBelow && dropdownFitsAbove);
+									});
 
-	});
-	
-//	$('#resultTablePagination li').on('click', function(){
-//	    $('#resultTablePagination li').removeClass('active');
-//	    $(this).addClass('active');
-//	});
-});
+				});

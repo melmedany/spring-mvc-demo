@@ -29,10 +29,6 @@ public class UserAccount {
 	private String gender;
 	@Column(name = "phone")
 	private String phone;
-	// @Column(name = "username")
-	// private String username;
-	// @Column(name = "password")
-	// private String password;
 
 	public UserAccount() {
 
@@ -93,22 +89,6 @@ public class UserAccount {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	// public String getUsername() {
-	// return username;
-	// }
-	//
-	// public void setUsername(String username) {
-	// this.username = username;
-	// }
-	//
-	// public String getPassword() {
-	// return password;
-	// }
-	//
-	// public void setPassword(String password) {
-	// this.password = password;
-	// }
 
 	@Override
 	public String toString() {
