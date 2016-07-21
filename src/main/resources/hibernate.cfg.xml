@@ -6,9 +6,9 @@
 	<session-factory>
 		<!-- JDBC Connection Settings -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/StudentDB?useSSL=false</property>
-		<property name="hibernate.connection.username">StudentDB</property>
-		<property name="hibernate.connection.password">StudentDB</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/[database]?useSSL=false</property>
+		<property name="hibernate.connection.username">[username]</property>
+		<property name="hibernate.connection.password">[password]</property>
 
 		<!-- Populate Tables and Insert Data -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
